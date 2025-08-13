@@ -1,1 +1,2 @@
-Lifesync
+LifeSync
+Your personal productivity companion
