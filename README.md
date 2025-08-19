@@ -67,8 +67,8 @@ Our vision for LifeSync extends far beyond this hackathon. We plan to expand its
 
   * [Taseen](https://github.com/Taseen2)
   * [Shoaib](https://github.com/shoaib8899)
-  * [Taseen]()
-  * [Taseen]()
+  * [Wasil]()
+  * [Kaif]()
 
 ### 💖 Impact
 
