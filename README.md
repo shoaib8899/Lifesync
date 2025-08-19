@@ -27,8 +27,6 @@ Here's how you can get started and see LifeSync in action:
 2.  **Set a Reminder:** Use our built-in scheduler to create a reminder to drink water every 2 hours.
 3.  **View Your Progress:** Check the main dashboard to see your progress on all your habits and health goals.
 
-*(Optional: Add a GIF or a screenshot of the application's main dashboard here to make it more visually appealing\!)*
-
 ### 🛠️ Getting Started
 
 To get a copy of the project up and running on your local machine for development and testing purposes, follow these simple steps.
@@ -68,7 +66,9 @@ Our vision for LifeSync extends far beyond this hackathon. We plan to expand its
 ### 🤝 Team
 
   * [Taseen](https://github.com/Taseen2)
-  * [Collaborator's Name / GitHub Profile]
+  * [Shoaib](https://github.com/shoaib8899)
+  * [Taseen]()
+  * [Taseen]()
 
 ### 💖 Impact
 
