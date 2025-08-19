@@ -41,7 +41,7 @@ To get a copy of the project up and running on your local machine for developmen
 
 ```sh
 # Clone the repository
-git clone https://github.com/your-username/your-repo.git
+git clone https://github.com/shoaib8899/Lifesync.git
 
 # Navigate to the project directory
 cd your-repo
@@ -67,7 +67,7 @@ Our vision for LifeSync extends far beyond this hackathon. We plan to expand its
 
 ### 🤝 Team
 
-  * [Your Name / GitHub Profile]
+  * [Taseen](https://github.com/Taseen2)
   * [Collaborator's Name / GitHub Profile]
 
 ### 💖 Impact
