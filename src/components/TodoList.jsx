@@ -12,11 +12,12 @@ import './TodoList.css'
  * - Persist data in localStorage
  * - Display task statistics
  */
-function TodoList() {
+function TodoList({ onAddSession, focusMode }) {
   // State for managing todos and input
   const [todos, setTodos] = useState([])
   const [inputValue, setInputValue] = useState('')
   const [error, setError] = useState('')
+  const [showTemplates, setShowTemplates] = useState(true)
 
   // Load todos from localStorage on component mount
   useEffect(() => {
@@ -38,6 +39,13 @@ function TodoList() {
       console.error('Error saving todos to localStorage:', error)
     }
   }, [todos])
+
+  const templates = [
+    { label: 'Study 25/5', text: 'Pomodoro Study Session (25m focus, 5m break)' },
+    { label: 'Workout', text: 'Full-body workout (45m)' },
+    { label: 'Meeting Prep', text: 'Prepare agenda and materials (30m)' },
+    { label: 'Deep Work', text: 'Deep work block (60m)' },
+  ]
 
   /**
    * Add a new todo item
@@ -67,6 +75,11 @@ function TodoList() {
 
     setTodos(prevTodos => [...prevTodos, newTodo])
     setInputValue('')
+    setError('')
+  }
+
+  const addTemplate = (t) => {
+    setInputValue(t.text)
     setError('')
   }
 
@@ -119,8 +132,22 @@ function TodoList() {
   const completedTasks = todos.filter(todo => todo.completed).length
   const pendingTasks = totalTasks - completedTasks
 
+  const startFocusOnFirstPending = () => {
+    const first = todos.find(t => !t.completed)
+    if (first && onAddSession) {
+      onAddSession({ type: 'focus', minutes: 25, date: new Date().toISOString() })
+    }
+  }
+
   return (
     <div className="todo-section">
+      {showTemplates && !focusMode && (
+        <div className="templates-bar">
+          {templates.map(t => (
+            <button key={t.label} className="template-button" onClick={() => addTemplate(t)}>{t.label}</button>
+          ))}
+        </div>
+      )}
       <div className="todo-header">
         <h2>Tasks</h2>
         <div className="task-stats">
@@ -156,6 +183,16 @@ function TodoList() {
           </button>
         </div>
         {error && <div className="error-message">{error}</div>}
+        {!focusMode && (
+          <div style={{ display: 'flex', gap: 8, marginTop: 8 }}>
+            <button className="action-button" onClick={() => setShowTemplates(v => !v)}>
+              {showTemplates ? 'Hide' : 'Show'} Templates
+            </button>
+            <button className="action-button" onClick={startFocusOnFirstPending} disabled={todos.every(t => t.completed)}>
+              Start Focus on Next Task
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Todo List */}

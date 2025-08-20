@@ -11,7 +11,7 @@ import './Clock.css'
  * - Audio notifications for timer completion
  * - Persistent state management
  */
-function Clock() {
+function Clock({ focusMode, onSessionComplete, clockFormat = '24h' }) {
   // Current time state
   const [currentTime, setCurrentTime] = useState(new Date())
   
@@ -28,6 +28,7 @@ function Clock() {
   
   // Active mode state
   const [activeMode, setActiveMode] = useState('clock') // 'clock', 'timer', 'stopwatch'
+  const [format, setFormat] = useState(clockFormat) // '24h' | '12h'
   
   // Refs for intervals
   const timerIntervalRef = useRef(null)
@@ -55,6 +56,12 @@ function Clock() {
           if (prevTime <= 1) {
             setTimerActive(false)
             playNotificationSound()
+            try {
+              if (onSessionComplete) onSessionComplete({ type: 'timer', minutes: Math.floor(timerTime / 60), date: new Date().toISOString() })
+              if (Notification && Notification.permission === 'granted') {
+                new Notification("Timer complete", { body: "Great job! Time's up." })
+              }
+            } catch {}
             return 0
           }
           return prevTime - 1
@@ -172,8 +179,9 @@ function Clock() {
    * Format time functions
    */
   const formatTime = (date) => {
-    return date.toLocaleTimeString('en-US', {
-      hour12: false,
+    const use12 = format === '12h'
+    return date.toLocaleTimeString(undefined, {
+      hour12: use12,
       hour: '2-digit',
       minute: '2-digit',
       second: '2-digit'
@@ -224,6 +232,12 @@ function Clock() {
           onClick={() => setActiveMode('stopwatch')}
         >
           Stopwatch
+        </button>
+      </div>
+      {/* Format toggle and focus toggle */}
+      <div style={{ display: 'flex', justifyContent: 'center', gap: 8, marginBottom: 12 }}>
+        <button className="action-button" onClick={() => setFormat(f => (f === '24h' ? '12h' : '24h'))}>
+          Clock: {format === '24h' ? '24-hour' : '12-hour'}
         </button>
       </div>
 

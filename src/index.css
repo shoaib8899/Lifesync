@@ -96,3 +96,245 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #a8a8a8;
 }
+
+/* ------------------------------ */
+/* Theme support & focus mode     */
+/* ------------------------------ */
+
+.theme-dark body,
+body.theme-dark {
+  background: linear-gradient(135deg, #0f172a 0%, #111827 100%);
+  color: #e5e7eb;
+}
+
+body.theme-dark .container {
+  background: rgba(17, 24, 39, 0.9);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+body.theme-dark .app-header {
+  background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+}
+
+body.theme-dark .todo-section {
+  background: #0b1220;
+  border-right-color: #1f2937;
+}
+
+body.theme-dark .todo-item {
+  background: #111827;
+  border-color: #1f2937;
+}
+
+body.theme-dark .clock-section {
+  background: #0b1220;
+}
+
+/* Focus mode: hide header and todos by default */
+.focus-mode .app-header,
+.focus-mode .todo-section {
+  display: none !important;
+}
+
+.focus-mode .main-content {
+  grid-template-columns: 1fr;
+}
+
+/* ------------------------------ */
+/* Header actions & toggles       */
+/* ------------------------------ */
+.header-actions {
+  margin-top: 12px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.action-button {
+  padding: 8px 12px;
+  border: 1px solid #e5e7eb;
+  background: white;
+  color: #374151;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.action-button.primary {
+  background: #4f46e5;
+  color: white;
+  border-color: #4338ca;
+}
+
+body.theme-dark .action-button {
+  background: #0b1220;
+  color: #e5e7eb;
+  border-color: #1f2937;
+}
+
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ------------------------------ */
+/* Templates bar                  */
+/* ------------------------------ */
+.templates-bar {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.template-button {
+  padding: 6px 10px;
+  border: 1px dashed #c7c9d1;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #4f46e5;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+body.theme-dark .template-button {
+  background: #0b1220;
+  border-color: #1f2937;
+  color: #a78bfa;
+}
+
+/* ------------------------------ */
+/* Modals (Notes, Dashboard)      */
+/* ------------------------------ */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+.modal-card {
+  width: min(900px, 92vw);
+  max-height: 84vh;
+  overflow: auto;
+  background: white;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+body.theme-dark .modal-card {
+  background: #111827;
+  border-color: #1f2937;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.close-button {
+  border: none;
+  background: transparent;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* ------------------------------ */
+/* Notes                          */
+/* ------------------------------ */
+.notes-toolbar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.note-input {
+  flex: 1;
+  padding: 10px 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: white;
+}
+
+body.theme-dark .note-input {
+  background: #0b1220;
+  border-color: #1f2937;
+  color: #e5e7eb;
+}
+
+.notes-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.note-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 12px;
+}
+
+body.theme-dark .note-card {
+  background: #0b1220;
+  border-color: #1f2937;
+}
+
+.note-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+/* ------------------------------ */
+/* Dashboard                      */
+/* ------------------------------ */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.stat-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 12px;
+}
+
+body.theme-dark .stat-card {
+  background: #0b1220;
+  border-color: #1f2937;
+}
+
+.weekly-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  height: 140px;
+  padding: 12px 0;
+}
+
+.bar {
+  width: 28px;
+  background: #4f46e5;
+  border-radius: 6px 6px 0 0;
+}
+
+body.theme-dark .bar {
+  background: #a78bfa;
+}
