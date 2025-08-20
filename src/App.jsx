@@ -36,6 +36,13 @@ function App() {
     document.body.classList.toggle('focus-mode', focusMode)
   }, [theme, focusMode])
 
+  // Exit focus on ESC
+  useEffect(() => {
+    const onKey = (e) => { if (e.key === 'Escape') setFocusMode(false) }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [])
+
   // Notification permission
   useEffect(() => {
     try {
@@ -114,6 +121,10 @@ function App() {
 
       <Notes isOpen={showNotes} onClose={() => setShowNotes(false)} />
       <Dashboard isOpen={showDashboard} onClose={() => setShowDashboard(false)} />
+
+      {focusMode && (
+        <button className="focus-exit" onClick={() => setFocusMode(false)} title="Exit Focus (Esc)">Exit Focus</button>
+      )}
     </div>
   )
 }

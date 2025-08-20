@@ -65,10 +65,10 @@
 
 .task-input {
   flex: 1;
-  padding: 12px 16px;
+  padding: 16px 18px;
   border: 2px solid #e5e7eb;
-  border-radius: 12px;
-  font-size: 1rem;
+  border-radius: 14px;
+  font-size: 1.125rem;
   background: white;
   transition: all 0.2s ease;
 }
@@ -129,7 +129,7 @@
 .todo-list {
   flex: 1;
   overflow-y: auto;
-  max-height: 400px;
+  max-height: 520px;
 }
 
 .empty-state {

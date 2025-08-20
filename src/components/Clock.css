@@ -13,7 +13,7 @@
   display: flex;
   background: #f3f4f6;
   border-radius: 12px;
-  padding: 4px;
+  padding: 6px;
   margin-bottom: 32px;
   gap: 4px;
 }
@@ -33,7 +33,7 @@
 .mode-button.active {
   background: white;
   color: #4f46e5;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
 }
 
 .mode-button:hover:not(.active) {
@@ -78,7 +78,7 @@
 }
 
 .timer-time {
-  font-size: 3.5rem;
+  font-size: 4rem;
   font-weight: 300;
   color: #1f2937;
   font-family: 'Inter', monospace;
@@ -221,7 +221,7 @@
 }
 
 .stopwatch-time {
-  font-size: 3.5rem;
+  font-size: 4rem;
   font-weight: 300;
   color: #1f2937;
   font-family: 'Inter', monospace;

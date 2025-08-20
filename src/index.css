@@ -108,8 +108,8 @@ body.theme-dark {
 }
 
 body.theme-dark .container {
-  background: rgba(17, 24, 39, 0.9);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  background: rgba(17, 24, 39, 0.92);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.5);
 }
 
 body.theme-dark .app-header {
@@ -126,6 +126,14 @@ body.theme-dark .todo-item {
   border-color: #1f2937;
 }
 
+body.theme-dark .todo-text,
+body.theme-dark .stat-number,
+body.theme-dark .current-time,
+body.theme-dark .stopwatch-time,
+body.theme-dark .timer-time {
+  color: #e5e7eb;
+}
+
 body.theme-dark .clock-section {
   background: #0b1220;
 }
@@ -138,6 +146,25 @@ body.theme-dark .clock-section {
 
 .focus-mode .main-content {
   grid-template-columns: 1fr;
+}
+
+/* floating exit button for focus mode */
+.focus-exit {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 60;
+  padding: 12px 14px;
+  border-radius: 9999px;
+  background: #ef4444;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
+
+body.theme-dark .focus-exit {
+  background: #dc2626;
 }
 
 /* ------------------------------ */
