@@ -17,7 +17,7 @@ function TodoList({ onAddSession, focusMode }) {
   const [todos, setTodos] = useState([])
   const [inputValue, setInputValue] = useState('')
   const [error, setError] = useState('')
-  const [showTemplates, setShowTemplates] = useState(true)
+  const [showTemplates, setShowTemplates] = useState(false)
 
   // Load todos from localStorage on component mount
   useEffect(() => {
@@ -132,12 +132,7 @@ function TodoList({ onAddSession, focusMode }) {
   const completedTasks = todos.filter(todo => todo.completed).length
   const pendingTasks = totalTasks - completedTasks
 
-  const startFocusOnFirstPending = () => {
-    const first = todos.find(t => !t.completed)
-    if (first && onAddSession) {
-      onAddSession({ type: 'focus', minutes: 25, date: new Date().toISOString() })
-    }
-  }
+  // removed per request: start-focus button
 
   return (
     <div className="todo-section">
@@ -164,7 +159,15 @@ function TodoList({ onAddSession, focusMode }) {
 
       {/* Add Task Input */}
       <div className="add-task-section">
-        <div className="input-group">
+        <div
+          className="input-group add-row"
+          onClick={(e) => {
+            // clicking the row (but not the input) adds the task when text exists
+            if ((e.target.tagName || '').toLowerCase() !== 'input') {
+              if (inputValue.trim()) addTodo()
+            }
+          }}
+        >
           <input
             type="text"
             value={inputValue}
@@ -174,22 +177,13 @@ function TodoList({ onAddSession, focusMode }) {
             className={`task-input ${error ? 'error' : ''}`}
             maxLength="100"
           />
-          <button 
-            onClick={addTodo}
-            className="add-button"
-            disabled={!inputValue.trim()}
-          >
-            <span className="add-icon">+</span>
-          </button>
+          <div className="add-hint">{inputValue.trim() ? 'Add' : 'Type task...'}</div>
         </div>
         {error && <div className="error-message">{error}</div>}
         {!focusMode && (
           <div style={{ display: 'flex', gap: 8, marginTop: 8 }}>
             <button className="action-button" onClick={() => setShowTemplates(v => !v)}>
               {showTemplates ? 'Hide' : 'Show'} Templates
-            </button>
-            <button className="action-button" onClick={startFocusOnFirstPending} disabled={todos.every(t => t.completed)}>
-              Start Focus on Next Task
             </button>
           </div>
         )}

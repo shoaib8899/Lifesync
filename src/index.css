@@ -35,7 +35,7 @@ body {
 .app-header {
   background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
   color: white;
-  padding: 24px 32px;
+  padding: 28px 32px;
   text-align: center;
 }
 
@@ -44,6 +44,13 @@ body {
   font-weight: 700;
   margin-bottom: 8px;
   letter-spacing: -0.025em;
+}
+
+/* Tablet breakpoint */
+@media (max-width: 1024px) {
+  .main-content {
+    grid-template-columns: 1fr;
+  }
 }
 
 .app-header p {
@@ -167,6 +174,11 @@ body.theme-dark .focus-exit {
   background: #dc2626;
 }
 
+.focus-exit:hover,
+.focus-exit:focus-visible {
+  filter: brightness(1.05);
+}
+
 /* ------------------------------ */
 /* Header actions & toggles       */
 /* ------------------------------ */
@@ -186,6 +198,12 @@ body.theme-dark .focus-exit {
   border-radius: 8px;
   cursor: pointer;
   font-size: 0.9rem;
+}
+
+.action-button:hover,
+.action-button:focus-visible {
+  border-color: #c7c9d1;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
 .action-button.primary {
@@ -224,6 +242,12 @@ body.theme-dark .action-button {
   color: #4f46e5;
   cursor: pointer;
   font-size: 0.85rem;
+}
+
+.template-button:hover,
+.template-button:focus-visible {
+  background: #f8fafc;
+  border-color: #a5adbd;
 }
 
 body.theme-dark .template-button {

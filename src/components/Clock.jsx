@@ -234,12 +234,14 @@ function Clock({ focusMode, onSessionComplete, clockFormat = '24h' }) {
           Stopwatch
         </button>
       </div>
-      {/* Format toggle and focus toggle */}
-      <div style={{ display: 'flex', justifyContent: 'center', gap: 8, marginBottom: 12 }}>
-        <button className="action-button" onClick={() => setFormat(f => (f === '24h' ? '12h' : '24h'))}>
-          Clock: {format === '24h' ? '24-hour' : '12-hour'}
-        </button>
-      </div>
+      {/* Format toggle: only show under Clock tab */}
+      {activeMode === 'clock' && (
+        <div style={{ display: 'flex', justifyContent: 'center', gap: 8, marginBottom: 12 }}>
+          <button className="action-button" onClick={() => setFormat(f => (f === '24h' ? '12h' : '24h'))}>
+            Clock: {format === '24h' ? '24-hour' : '12-hour'}
+          </button>
+        </div>
+      )}
 
       {/* Clock Mode */}
       {activeMode === 'clock' && (

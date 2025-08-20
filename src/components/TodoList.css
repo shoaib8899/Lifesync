@@ -61,22 +61,43 @@
   display: flex;
   gap: 8px;
   margin-bottom: 8px;
+  width: 100%;
+  flex-wrap: nowrap;
+}
+
+/* clickable add row */
+.add-row {
+  align-items: center;
+  border: 2px dashed #e5e7eb;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: #ffffff;
+  width: 100%;
+  cursor: pointer;
+  gap: 0;
+  position: relative;
 }
 
 .task-input {
-  flex: 1;
-  padding: 16px 18px;
+  flex: 1 1 100%;
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 16px 96px 16px 18px; /* leave space for hint on the right */
   border: 2px solid #e5e7eb;
   border-radius: 14px;
   font-size: 1.125rem;
-  background: white;
+  background: transparent;
   transition: all 0.2s ease;
 }
 
 .task-input:focus {
   outline: none;
+}
+
+.add-row:focus-within {
   border-color: #4f46e5;
-  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.08);
 }
 
 .task-input.error {
@@ -88,18 +109,7 @@
 }
 
 .add-button {
-  padding: 12px 16px;
-  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
-  color: white;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: all 0.2s ease;
-  min-width: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: none;
 }
 
 .add-button:hover:not(:disabled) {
@@ -114,8 +124,46 @@
 }
 
 .add-icon {
-  font-size: 1.25rem;
-  line-height: 1;
+  display: none;
+}
+
+.add-hint {
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6b7280;
+  user-select: none;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+body.theme-dark .add-row {
+  border-color: #374151;
+  background: #0b1220;
+}
+
+body.theme-dark .add-hint {
+  color: #9ca3af;
+}
+
+/* placeholder visibility */
+.task-input::placeholder {
+  color: #9ca3af;
+}
+
+body.theme-dark .task-input::placeholder {
+  color: #6b7280;
+}
+
+@media (max-width: 768px) {
+  .todo-section {
+    padding: 20px;
+  }
+  .task-input {
+    font-size: 1rem;
+    padding: 14px 16px;
+  }
 }
 
 .error-message {

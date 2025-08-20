@@ -18,6 +18,13 @@
   gap: 4px;
 }
 
+.mode-selector.minimal {
+  background: transparent;
+  justify-content: center;
+  gap: 12px;
+  padding: 0;
+}
+
 .mode-button {
   flex: 1;
   padding: 12px 16px;
@@ -28,6 +35,17 @@
   color: #6b7280;
   cursor: pointer;
   transition: all 0.2s ease;
+}
+
+.mode-link {
+  font-size: 0.95rem;
+  color: #6b7280;
+  cursor: pointer;
+}
+
+.mode-link.active {
+  color: #4f46e5;
+  font-weight: 600;
 }
 
 .mode-button.active {
@@ -51,7 +69,7 @@
 }
 
 .current-time {
-  font-size: 4rem;
+  font-size: clamp(2.5rem, 6vw, 4rem);
   font-weight: 300;
   color: #1f2937;
   margin-bottom: 16px;
@@ -78,7 +96,7 @@
 }
 
 .timer-time {
-  font-size: 4rem;
+  font-size: clamp(2.25rem, 6vw, 4rem);
   font-weight: 300;
   color: #1f2937;
   font-family: 'Inter', monospace;
@@ -221,7 +239,7 @@
 }
 
 .stopwatch-time {
-  font-size: 4rem;
+  font-size: clamp(2.25rem, 6vw, 4rem);
   font-weight: 300;
   color: #1f2937;
   font-family: 'Inter', monospace;
